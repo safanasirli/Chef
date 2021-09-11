@@ -15,7 +15,7 @@ export default Header;
 const Container = styled.div`
   display: flex;
   margin-left: 40px;
-  background-image: linear-gradient(to right, white, white, #ecffec, #003b00);
+  background-image: linear-gradient(to right, white, white,white, #ecffec, #003b00);
 `;
 const Img = styled.img`
   height: 50px;
