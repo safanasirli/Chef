@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import Header from "./Header";
 
 function Home() {
+  const history = useHistory();
+  const handleRoute = () => {
+    history.push("/recipe");
+  };
   return (
     <div>
       <Header />
       <Main>
         <H1>Enjoy Cooking</H1>
         <H2>Browse Though Over 2.3 Million Tasty Recipes</H2>
-        <Button>Start Browsing</Button>
+        <Button onClick={handleRoute}>Start Browsing</Button>
       </Main>
     </div>
   );
