@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 function RecipeList ({ recipes }) {
+  const [active, setActive] = useState(false)
+  const toggleIngredients = () => {
+    setActive(!active)
+  }
   return (
     <Card>
       {recipes.map((recipe, idx) => {
@@ -10,12 +14,17 @@ function RecipeList ({ recipes }) {
             <Img src={recipe.recipe.image} alt={recipe.recipe.label} />
             <h1>{recipe.recipe.label}</h1>
             <h2>Calories:{recipe.recipe.calories}</h2>
-            <button>Ingredients</button>
-            <ul id='ingredients'>
-              {recipe.recipe.ingredients.map((ingredients, idx) => (
-                <li key='idx'>{ingredients.text}</li>
-              ))}
-            </ul>
+            <button onClick={toggleIngredients}>Ingredients</button>
+            {active ? (
+              <ul>
+                {recipe.recipe.ingredients.map((ingredients, idx) => (
+                  <li key='idx'>{ingredients.text}</li>
+                ))}
+              </ul>
+            ) : (
+              <ul></ul>
+            )}
+
             <a href={recipe.recipe.url}>See the recipe</a>
           </CardItem>
         )
