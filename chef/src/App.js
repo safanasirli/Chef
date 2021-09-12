@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
+import Recipe from './components/Recipe'
 
 function App () {
   const [recipe, setRecipe] = useState([])
@@ -17,10 +18,11 @@ function App () {
   useEffect(() => {
     getRecipe()
   }, [])
+
   return (
     <div className='App'>
       <Route exact path='/' component={Home} />
-      <Route path='/recipe' />
+      <Route path='/recipe' component={Recipe} />
     </div>
   )
 }
