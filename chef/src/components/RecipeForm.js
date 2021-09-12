@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function RecipeForm () {
+function RecipeForm ({ search, updateSearch }) {
   return (
     <div>
       <form>
-        <Input type='text' />
+        <Input type='text' value={search} onChange={updateSearch} />
         <Button type='submit'>Search</Button>
       </form>
     </div>

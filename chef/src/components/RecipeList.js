@@ -8,9 +8,9 @@ function RecipeList ({ recipes }) {
   }
   return (
     <Card>
-      {recipes.map((recipe, idx) => {
+      {recipes.map((recipe, index) => {
         return (
-          <CardItem key='idx'>
+          <CardItem key={index}>
             <Img src={recipe.recipe.image} alt={recipe.recipe.label} />
             <h1>{recipe.recipe.label}</h1>
             <h2>Calories:{recipe.recipe.calories}</h2>
@@ -18,7 +18,7 @@ function RecipeList ({ recipes }) {
             {active ? (
               <ul>
                 {recipe.recipe.ingredients.map((ingredients, idx) => (
-                  <li key='idx'>{ingredients.text}</li>
+                  <li key={index}>{ingredients.text}</li>
                 ))}
               </ul>
             ) : (
