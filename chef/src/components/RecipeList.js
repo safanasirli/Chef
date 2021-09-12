@@ -18,7 +18,7 @@ function RecipeList ({ recipes }) {
             {active ? (
               <ul>
                 {recipe.recipe.ingredients.map((ingredients, idx) => (
-                  <li key={index}>{ingredients.text}</li>
+                  <li key={idx}>{ingredients.text}</li>
                 ))}
               </ul>
             ) : (
@@ -36,7 +36,7 @@ function RecipeList ({ recipes }) {
 export default RecipeList
 const Card = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flew-wrap: wrap;
 `
 const CardItem = styled.div`

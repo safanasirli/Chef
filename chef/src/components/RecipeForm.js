@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function RecipeForm ({ search, updateSearch }) {
+function RecipeForm ({ search, updateSearch, handleSubmit }) {
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input type='text' value={search} onChange={updateSearch} />
         <Button type='submit'>Search</Button>
       </form>

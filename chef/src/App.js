@@ -7,11 +7,13 @@ import Recipe from './components/Recipe'
 function App () {
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState([])
+  const [query, setQuery] = useState('chicken')
+
   const APP_ID = '89b6f730'
   const APP_KEY = 'e825a18b8543f517c176b5aee63db7c4'
   const getRecipe = async () => {
     const res = await fetch(
-      `https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     )
     const data = await res.json()
     setRecipes(data.hits)
@@ -19,11 +21,16 @@ function App () {
   }
   useEffect(() => {
     getRecipe()
-  }, [])
+  }, [query])
 
   const updateSearch = e => {
     setSearch(e.target.value)
     console.log(e.target.value)
+  }
+  //I don't want to request data in every search. Just to request data when submit button is hit.
+  const handleSubmit = e => {
+    e.preventDefault()
+    setQuery(search)
   }
   return (
     <div className='App'>
@@ -33,8 +40,9 @@ function App () {
         render={() => (
           <Recipe
             recipes={recipes}
-            updateSearch={updateSearch}
             search={search}
+            updateSearch={updateSearch}
+            handleSubmit={handleSubmit}
           />
         )}
       />
