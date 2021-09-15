@@ -10,7 +10,12 @@ function RecipeForm ({
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Input type='text' value={search} onChange={updateSearch} />
+        <Input
+          type='text'
+          value={search}
+          onChange={updateSearch}
+          placeholder='Search recipes by name, ingredient, etc'
+        />
         <Button type='submit'>Search</Button>
         <select onClick={e => setDietLabels(e.target.value)}>
           <option>Filter By Diet</option>

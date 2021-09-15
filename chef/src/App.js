@@ -7,7 +7,7 @@ import Recipe from './components/Recipe'
 function App () {
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState([])
-  const [query, setQuery] = useState('chicken')
+  const [query, setQuery] = useState('egg')
   const [healthLabels, setHealthLabels] = useState('peanut-free')
   const [dietLabels, setDietLabels] = useState('balanced')
   const APP_ID = '89b6f730'

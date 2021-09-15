@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import styled from 'styled-components'
 
 function RecipeList ({ recipes }) {
@@ -12,20 +13,26 @@ function RecipeList ({ recipes }) {
         return (
           <CardItem key={index}>
             <Img src={recipe.recipe.image} alt={recipe.recipe.label} />
-            <h1>{recipe.recipe.label}</h1>
-            <h2>Calories:{recipe.recipe.calories}</h2>
-            <button onClick={toggleIngredients}>Ingredients</button>
+            <h2>{recipe.recipe.label}</h2>
+            <H3>Calories:{Math.round(recipe.recipe.calories)}kcal</H3>
             {active ? (
-              <ul>
+              <List>
                 {recipe.recipe.ingredients.map((ingredients, idx) => (
                   <li key={idx}>{ingredients.text}</li>
                 ))}
-              </ul>
+              </List>
             ) : (
               <ul></ul>
             )}
 
-            <a href={recipe.recipe.url}>See the recipe</a>
+            <ButtonContainer>
+              <Button onClick={toggleIngredients}>Ingredients</Button>
+              <Button
+                onClick={() => (window.location.href = recipe.recipe.url)}
+              >
+                Full Recipe
+              </Button>
+            </ButtonContainer>
           </CardItem>
         )
       })}
@@ -38,14 +45,38 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   flew-wrap: wrap;
+  margin-top: 20px;
 `
 const CardItem = styled.div`
-  width: 400px;
-  height: 700px;
+  width: 300px;
+  height: 500px;
   border: 1px solid black;
   margin: 0 10px 0 10px;
+  border: 1px solid whitesmoke;
 `
 const Img = styled.img`
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
+  border-radius: 5%;
+`
+const Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  background-color: #002700;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  position: sticky;
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`
+const H3 = styled.h3`
+  color: grey;
+`
+const List = styled.ul`
+  margin-top: -70%;
 `
