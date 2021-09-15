@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
+import Header from './components/Header'
 import Recipe from './components/Recipe'
 
 function App () {
@@ -36,6 +37,7 @@ function App () {
   }
   return (
     <div className='App'>
+    <Header/>
       <Route exact path='/' component={Home} />
       <Route
         path='/recipe'

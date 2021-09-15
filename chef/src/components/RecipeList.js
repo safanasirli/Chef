@@ -3,10 +3,6 @@ import { Modal } from 'react-bootstrap'
 import styled from 'styled-components'
 
 function RecipeList ({ recipes }) {
-  const [active, setActive] = useState(false)
-  const toggleIngredients = () => {
-    setActive(!active)
-  }
   return (
     <Card>
       {recipes.map((recipe, index) => {
@@ -15,24 +11,9 @@ function RecipeList ({ recipes }) {
             <Img src={recipe.recipe.image} alt={recipe.recipe.label} />
             <h2>{recipe.recipe.label}</h2>
             <H3>Calories:{Math.round(recipe.recipe.calories)}kcal</H3>
-            {active ? (
-              <List>
-                {recipe.recipe.ingredients.map((ingredients, idx) => (
-                  <li key={idx}>{ingredients.text}</li>
-                ))}
-              </List>
-            ) : (
-              <ul></ul>
-            )}
-
-            <ButtonContainer>
-              <Button onClick={toggleIngredients}>Ingredients</Button>
-              <Button
-                onClick={() => (window.location.href = recipe.recipe.url)}
-              >
-                Full Recipe
-              </Button>
-            </ButtonContainer>
+            <Button onClick={() => (window.location.href = recipe.recipe.url)}>
+              Full Recipe
+            </Button>
           </CardItem>
         )
       })}
@@ -49,11 +30,15 @@ const Card = styled.div`
   margin-top: 50px;
 `
 const CardItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 300px;
-  height: 600px;
+  height: 500px;
   border: 1px solid black;
   margin: 0 10px 0 10px;
   border: 1px solid whitesmoke;
+  margin-top: 2rem;
 `
 const Img = styled.img`
   width: 300px;
@@ -69,14 +54,9 @@ const Button = styled.button`
   border: none;
   padding: 10px 20px 10px 20px;
   position: sticky;
-  margin-bottom: 0;
-  justify-content: flex-end;
+  margin: 0 auto;
 `
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`
+
 const H3 = styled.h3`
   color: grey;
 `

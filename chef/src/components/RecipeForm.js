@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import '../App.css'
 function RecipeForm ({
   search,
   updateSearch,
@@ -8,7 +9,7 @@ function RecipeForm ({
   setDietLabels
 }) {
   return (
-    <div>
+    <Container>
       <form onSubmit={handleSubmit}>
         <Input
           type='text'
@@ -39,12 +40,14 @@ function RecipeForm ({
           <option value='egg-free'>Egg-Free</option>
         </select>
       </form>
-    </div>
+    </Container>
   )
 }
 
 export default RecipeForm
-
+const Container = styled.div`
+text-align:center;
+`
 const Input = styled.input`
   border: 2px solid #002700;
   border-radius: 8px;
