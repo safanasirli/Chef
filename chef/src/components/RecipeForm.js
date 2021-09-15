@@ -1,36 +1,37 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-
-function RecipeForm ({ search, updateSearch, handleSubmit }) {
-  const [filterParam, setFilterParam] = useState('All')
-
+function RecipeForm ({
+  search,
+  updateSearch,
+  handleSubmit,
+  setHealthLabels,
+  setDietLabels
+}) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <Input type='text' value={search} onChange={updateSearch} />
         <Button type='submit'>Search</Button>
-        <select
-          onChange={e => {
-            setFilterParam(e.target.value)
-          }}
-        >
-          <option value='All'>Filter By Diet</option>
-          <option value='Balanced'>Balanced</option>
-          <option value='High-Protein'>High Protein</option>
-          <option value='Low-Card'>Low Carb</option>
-          <option value='Low-Fat'>Low Fat</option>
+        <select onClick={e => setDietLabels(e.target.value)}>
+          <option>Filter By Diet</option>
+          <option value='balanced'>Balanced</option>
+          <option value='high-fiber'>High-Fiber</option>
+          <option value='high-protein'>High-Protein </option>
+          <option value='low-fat'>Low-Fat</option>
+          <option value='low-carb'>Low-Carb</option>
+          <option value='low-sodium'>Low-Sodium</option>
         </select>
-        <select
-          onChange={e => {
-            setFilterParam(e.target.value)
-          }}
-        >
-          <option value='All'>Filter By Health</option>
-          <option value='Vegan'>Vegan</option>
-          <option value='Vegeterian'>Vegeterian</option>
-          <option value='Alcohol-Free'>Alcohol Free</option>
-          <option value='Peanut-Free'>Peanut Free</option>
-          <option value='Sugar-Conscious'>Sugar Conscious</option>
+        <select onClick={e => setHealthLabels(e.target.value)}>
+          <option value='vegan'>Filter By Health</option>
+          <option value='vegan'>Vegan</option>
+          <option value='vegetarian'>Vegeterian</option>
+          <option value='paleo'>Paleo</option>
+          <option value='dairy-free'>Dairy-Free</option>
+          <option value='gluten-free'>Gluten-Free</option>
+          <option value='fat-free'>Fat-Free</option>
+          <option value='low-sugar'>Low-Sugar</option>
+          <option value='peanut-free'>Peanut-Free</option>
+          <option value='egg-free'>Egg-Free</option>
         </select>
       </form>
     </div>

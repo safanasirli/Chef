@@ -2,7 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import RecipeForm from './RecipeForm'
 import RecipeList from './RecipeList'
-function Recipe ({ recipes, search, updateSearch, handleSubmit }) {
+function Recipe ({
+  recipes,
+  search,
+  updateSearch,
+  handleSubmit,
+  filterSearch,
+  setDietLabels,
+  setHealthLabels
+}) {
   return (
     <div>
       <H1>
@@ -10,8 +18,11 @@ function Recipe ({ recipes, search, updateSearch, handleSubmit }) {
         International Dishes.
       </H1>
       <RecipeForm
+        recipes={recipes}
         updateSearch={updateSearch}
         handleSubmit={handleSubmit}
+        setDietLabels={setDietLabels}
+        setHealthLabels={setHealthLabels}
         search={search}
       />
       <RecipeList recipes={recipes} />

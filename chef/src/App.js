@@ -8,13 +8,13 @@ function App () {
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState([])
   const [query, setQuery] = useState('chicken')
-  const [filterParam, setFilterParam] = useState("All")
-
+  const [healthLabels, setHealthLabels] = useState('peanut-free')
+  const [dietLabels, setDietLabels] = useState('balanced')
   const APP_ID = '89b6f730'
   const APP_KEY = 'e825a18b8543f517c176b5aee63db7c4'
   const getRecipe = async () => {
     const res = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      `https://api.edamam.com/search?diet=${dietLabels}&health=${healthLabels}&q=${query}&from=1&to=20&app_id=${APP_ID}&app_key=${APP_KEY}`
     )
     const data = await res.json()
     setRecipes(data.hits)
@@ -28,7 +28,7 @@ function App () {
     setSearch(e.target.value)
     console.log(e.target.value)
   }
-  
+
   //I don't want to request data in every search. Just to request data when submit button is hit.
   const handleSubmit = e => {
     e.preventDefault()
@@ -45,6 +45,8 @@ function App () {
             search={search}
             updateSearch={updateSearch}
             handleSubmit={handleSubmit}
+            setDietLabels={setDietLabels}
+            setHealthLabels={setHealthLabels}
           />
         )}
       />
