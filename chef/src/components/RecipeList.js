@@ -43,13 +43,14 @@ function RecipeList ({ recipes }) {
 export default RecipeList
 const Card = styled.div`
   display: flex;
-  flex-direction: column;
-  flew-wrap: wrap;
-  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 50px;
 `
 const CardItem = styled.div`
   width: 300px;
-  height: 500px;
+  height: 600px;
   border: 1px solid black;
   margin: 0 10px 0 10px;
   border: 1px solid whitesmoke;
@@ -68,6 +69,8 @@ const Button = styled.button`
   border: none;
   padding: 10px 20px 10px 20px;
   position: sticky;
+  margin-bottom: 0;
+  justify-content: flex-end;
 `
 const ButtonContainer = styled.div`
   display: flex;
